@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_153148) do
+ActiveRecord::Schema.define(version: 2020_03_27_180827) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_153148) do
   create_table "subscriber_user_mappings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "subscriber_id"
+    t.index ["user_id", "subscriber_id"], name: "index_subscriber_user_mappings_on_user_id_and_subscriber_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -33,10 +33,5 @@ RSpec.describe User, type: :model do
       assc = described_class.reflect_on_association(:subscribers)
       expect(assc.macro).to eq :has_many
     end
-
-    it 'has many users that are subscribed to' do
-      assc = described_class.reflect_on_association(:users)
-      expect(assc.macro).to eq :has_many
-    end
   end
 end

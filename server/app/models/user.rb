@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   belongs_to :group
-  has_many :subscriber_user_mappings
+  has_many :subscriber_user_mappings, foreign_key: :subscriber_id
   has_many :subscribers, through: :subscriber_user_mappings
-  has_many :users, through: :subscriber_user_mappings
   validates_presence_of :name
 
   def self.get_list
