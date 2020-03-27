@@ -7,6 +7,7 @@ Rails.application.routes.draw do
           get :me
         end
       end
+      resource :subscriber_user_mappings, only: [:create, :destroy]
     end
   end
 end

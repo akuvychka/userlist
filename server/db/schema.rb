@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_104012) do
+ActiveRecord::Schema.define(version: 2020_03_27_153148) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.index ["name"], name: "index_groups_on_name", unique: true
+  end
+
+  create_table "subscriber_user_mappings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "subscriber_id"
   end
 
   create_table "users", force: :cascade do |t|

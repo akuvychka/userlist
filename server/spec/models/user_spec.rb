@@ -23,5 +23,20 @@ RSpec.describe User, type: :model do
       assc = described_class.reflect_on_association(:group)
       expect(assc.macro).to eq :belongs_to
     end
+
+    it 'has many subscribers user mapping' do
+      assc = described_class.reflect_on_association(:subscriber_user_mappings)
+      expect(assc.macro).to eq :has_many
+    end
+
+    it 'has many subscribers' do
+      assc = described_class.reflect_on_association(:subscribers)
+      expect(assc.macro).to eq :has_many
+    end
+
+    it 'has many users that are subscribed to' do
+      assc = described_class.reflect_on_association(:users)
+      expect(assc.macro).to eq :has_many
+    end
   end
 end
