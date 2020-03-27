@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-  has_one :group
+  belongs_to :group
   validates_presence_of :name
 end
