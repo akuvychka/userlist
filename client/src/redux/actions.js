@@ -1,4 +1,4 @@
-import {FOLLOW_USER, GET_ME, GET_USERS} from "./types";
+import {FOLLOW_USER, GET_ME, GET_USERS, UN_FOLLOW_USER} from "./types";
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -27,10 +27,10 @@ export function getUsers() {
     }
 }
 
-export function followUser(id) {
+export function followUser(user_id) {
     return async dispatch => {
         const body = new FormData();
-        body.append('user_id', id);
+        body.append('user_id', user_id);
         const response = await fetch('http://127.0.0.1:3001/api/subscriber_user_mappings', {
             method: 'POST',
             headers: requestParams(),
@@ -43,6 +43,17 @@ export function followUser(id) {
     }
 }
 
-export function unFollowUser(id) {
-
+export function unFollowUser(user_mapping) {
+    return async dispatch => {
+        const body = new FormData();
+        body.append('id', user_mapping.id);
+        const response = await fetch('http://127.0.0.1:3001/api/subscriber_user_mappings', {
+            method: 'DELETE',
+            headers: requestParams(),
+            body: body
+        });
+        if (response.status === 200) {
+            dispatch( {type: UN_FOLLOW_USER, payload: user_mapping} );
+        }
+    }
 }
