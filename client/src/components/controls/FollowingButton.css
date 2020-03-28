@@ -1,0 +1,15 @@
+.btn-follow {
+    color: orange;
+}
+
+.btn-follow:hover {
+    color: orange;
+}
+
+.btn-unfollow {
+    color: green;
+}
+
+.btn-unfollow:hover {
+    color: red;
+}
