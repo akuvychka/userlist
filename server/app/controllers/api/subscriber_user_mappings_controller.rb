@@ -3,6 +3,7 @@ module Api
     before_action :set_subscriber_user_mapping, only: :destroy
     def create
       begin
+        puts params
         subscriber_user_mapping = SubscriberUserMapping.new(subscriber_user_mapping_params)
         if subscriber_user_mapping.save
           render json: { subscriber_user_mapping: subscriber_user_mapping }, status: :ok

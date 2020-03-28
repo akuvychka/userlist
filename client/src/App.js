@@ -9,7 +9,7 @@ function App({user_name}) {
         dispatch(getMe());
         dispatch(getUsers());
         }, [dispatch]);
-    //start loading
+
   return (
     <div className="container pt-3">
       <div className="row">
