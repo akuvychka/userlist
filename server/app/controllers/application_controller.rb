@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_user
-    if request.cookies['user'].present?
-      @user = User.find_by_id(request.cookies['user'])
+    if request.headers["X-User"].present?
+      @user = User.find_by_id(request.headers["X-User"])
     else
       render json: { error: 'not signed in'}, status: :not_acceptable
     end

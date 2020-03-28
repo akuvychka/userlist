@@ -1,7 +1,8 @@
 import React from "react";
 import User from "./User";
+import { connect } from "react-redux";
 
-const UserList =  ({users}) => {
+const UserList =  ({syncedUsers}) => {
     return (
         <div>
             <div className="row">
@@ -17,11 +18,17 @@ const UserList =  ({users}) => {
                 </tr>
                 </thead>
                 <tbody>
-                {users.map( user => <User user={user} key={user.id} /> )}
+                {syncedUsers.map( user => <User user={user} key={user.id} /> )}
                 </tbody>
             </table>
         </div>
     );
 };
 
-export default UserList;
+const mapStateToProps = state => {
+    return {
+        syncedUsers: state.users
+    }
+};
+
+export default connect(mapStateToProps, null)(UserList);
