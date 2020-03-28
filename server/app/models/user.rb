@@ -5,6 +5,6 @@ class User < ApplicationRecord
   validates_presence_of :name
 
   def self.get_list
-    User.joins(:group).select('*, groups.name as group_name, ((select count(*) from subscriber_user_mappings where subscriber_user_mappings.user_id = users.id)) as sub_count')
+    User.joins(:group).select('*, users.name as name, groups.name as group_name, ((select count(*) from subscriber_user_mappings where subscriber_user_mappings.user_id = users.id)) as sub_count')
   end
 end
