@@ -1,8 +1,11 @@
 import React from "react";
-import User from "./User";
-import { connect } from "react-redux";
+import { useSelector } from 'react-redux'
 
-const UserList =  ({syncedUsers}) => {
+import User from "./User";
+
+const UserList =  () => {
+    const syncedUsers = useSelector(state => state.users);
+
     return (
         <div>
             <div className="row">
@@ -25,10 +28,4 @@ const UserList =  ({syncedUsers}) => {
     );
 };
 
-const mapStateToProps = state => {
-    return {
-        syncedUsers: state.users
-    }
-};
-
-export default connect(mapStateToProps, null)(UserList);
+export default UserList;

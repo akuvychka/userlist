@@ -1,10 +1,13 @@
 import React, {useEffect} from 'react';
 import UserList from "./components/UserList";
-import {connect, useDispatch} from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 import {getMe, getUsers} from "./redux/actions";
 
-function App({user_name}) {
-    let dispatch = useDispatch();
+function App() {
+    const user_name = useSelector(state => state.me.me.name)
+    const dispatch = useDispatch();
+
+
     useEffect(() => {
         dispatch(getMe());
         dispatch(getUsers());
@@ -27,10 +30,4 @@ function App({user_name}) {
   );
 }
 
-const mapStateToProps = state => {
-    return {
-        user_name: state.me.me.name
-    }
-};
-
-export default connect(mapStateToProps, null)(App);
+export default App;
